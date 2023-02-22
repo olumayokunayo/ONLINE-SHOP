@@ -21,6 +21,9 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css
 "
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
     <title>Document</title>
   </head>
@@ -30,6 +33,7 @@
         <img src="./images/bacardi.gif" alt="" />
       </div>
       <nav class="nav">
+        <img src="./images/free-logoa.jpg" alt="">
         <a class="head" href="index.html">RAD LIFE</a>
         <div class="navItems">
           <input type="search" placeholder="Find the best products for you..."><span class="search material-symbols-outlined">
@@ -62,22 +66,22 @@
       </nav>
       <div id="signUpPage" class="signUpPageDiv">
         <div  class="signUpPage">
-          <a href="#">SIGN IN</a>
+         <button class="signInBtn" id="signInBtn">SIGN IN</button>
           <hr>
           <div class="signButtons">
-           <button>
+           <button id="signAccountBtn">
              <span class="material-symbols-outlined">
                person
                </span>
                <span>My Account</span>
            </button>
-           <button>
+           <button id="ordersBtn">
              <span class="material-symbols-outlined">
                shopping_bag
                </span>
              <span>Orders</span>
            </button>
-           <button>
+           <button id="checkoutBtn">
              <span class="material-symbols-outlined">
                shopping_cart_checkout
                </span>
@@ -94,16 +98,7 @@
             <button id="jeweleryBtn">Jewelery</button>
             <button id="electBtn">Electronics</button>
             <button id="womensBtn">Women's Clothing</button>
-            <hr />
             <div>
-              <footer>
-                <a href="">Terms</a>
-                <a href="">Privacy</a>
-                <a href="">About</a>
-                <a href="">Testimonials</a>
-                <a href="">Privacy</a>
-                <p>Copyright &copy; 2023 E-Shop. All legal rights reserved.</p>
-              </footer>
             </div>
           </div>
         </div>
@@ -129,19 +124,19 @@
                 <p class="showingOf">Showing 1-20 of 20 results</p>
               </div>
               <div id="show"></div>
-          <div class="flashDiv">
-            <h1 class="flashHead"></h1>
-            <a href=""
-              >See more<span class="material-symbols-outlined">
-                expand_more
-                </span></a
-            >
-          </div>
           <div id="show1"></div>
             </div>
           </div>
         </div>
       </div>
+      <footer>
+        <a href="">Terms</a>
+        <a href="">Privacy</a>
+        <a href="">About</a>
+        <a href="">Testimonials</a>
+        <a href="">Privacy</a>
+        <p>Copyright &copy; 2023 E-Shop. All legal rights reserved.</p>
+      </footer>
     </main>
   </body>
 

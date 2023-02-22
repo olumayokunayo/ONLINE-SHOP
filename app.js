@@ -495,7 +495,6 @@ writeWord();
 
 let accountBtn = document.getElementById("accountBtn");
 let signUpPage = document.getElementById("signUpPage");
-let hidden = document.getElementById("hidden");
 
 accountBtn.addEventListener("click", function(){
   signUpPage.classList.toggle("signUpPageDiv");
@@ -504,3 +503,28 @@ accountBtn.addEventListener("click", function(){
 
 
 
+// SIGN IN
+
+let signInBtn = document.getElementById("signInBtn");
+
+signInBtn.addEventListener("click", function(){
+  window.location.href = "signup.html";
+})
+
+let signAccountBtn = document.getElementById("signAccountBtn");
+
+signAccountBtn.addEventListener("click", function(){
+  window.location.href = "signup.html";
+})
+
+let ordersBtn = document.getElementById("ordersBtn");
+
+ordersBtn.addEventListener("click", function(){
+  window.location.href = "cart.html"
+})
+
+
+let checkoutBtn = document.getElementById("checkoutBtn");
+checkoutBtn.addEventListener("click", function(){
+  window.location.href = "cart.html"
+})

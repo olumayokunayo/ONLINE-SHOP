@@ -5,6 +5,7 @@
   }
   body {
     background-color: rgba(255, 211, 201, 0.521);
+    font-family: 'Open Sans', sans-serif;
   }
   .main {
     padding: 2rem;
