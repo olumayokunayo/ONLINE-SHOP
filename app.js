@@ -449,7 +449,7 @@ function count() {
   let count = document.getElementById("count");
   let cartArr = JSON.parse(localStorage.getItem("item")) || [];
   count.textContent = cartArr.length;
-  console.log(cartArr);
+  // console.log(cartArr);
 }
 count();
 
@@ -459,35 +459,14 @@ function updateTotal() {
   let totalBill = document.getElementById("totalBill");
   let gotten = JSON.parse(localStorage.getItem("item"));
   gotten.forEach((element) => {
-    console.log(element);
+    // console.log(element);
     cartTotal += element.total;
     totalBill.textContent = `$ ${cartTotal}`;
   });
-  console.log(cartTotal);
+  // console.log(cartTotal);
 }
 updateTotal();
 
-// PRINT WORDS
-let flashShow = document.querySelector(".flashHead");
-let words = "FLASH SALES"
-
-
-let i = 0;
-let j = words.length - 1;
-
-// WRITE
-
-function writeWord(){
-  let interval = setInterval(() => {
-    if(i < words.length){
-      flashShow.innerHTML += words[i];
-      i++;
-    } else {
-      clearInterval(interval)
-    }
-  }, 200);
-}
-writeWord();
 
 
 
@@ -528,3 +507,66 @@ let checkoutBtn = document.getElementById("checkoutBtn");
 checkoutBtn.addEventListener("click", function(){
   window.location.href = "cart.html"
 })
+
+// SEARCH BUTTON
+
+let searchInput = document.getElementById("searchInput");
+let searchBtn = document.getElementById("searchBtn");
+
+searchBtn.addEventListener("click", performSearch);
+
+function performSearch(){
+screen.innerHTML = "";
+  let searchValue = searchInput.value.trim().toLowerCase();
+
+  fetch("https://fakestoreapi.com/products/")
+  .then((res) => res.json())
+  .then((json) => { 
+    for (let i = 0; i < json.length; i++) {
+      const element = json[i];
+      console.log(element);
+
+      if(element.title.toLowerCase().includes(searchValue) || element.description.toLowerCase().includes(searchValue) || element.category.toLowerCase().includes(searchValue)){
+        screen.innerHTML += `<div class="searchDiv">
+             <div class="items">
+               <img class="img" src="${element.image}" alt="">
+              <p class="title">${element.title}</p>
+               <p class="desc">${element.description}</p>
+              <p class"price">${element.price}</p>
+              <div class="qtyDiv">
+              <p>Quantity: </p> 
+              <div class="qty">
+              <button class="minus" onclick="minusBtn(${element.id})"><span class="material-symbols-outlined">
+              remove
+              </span></button><span><input type="text" id="inputNum-${element.id}" value="1"></span>
+    
+              <button class="plus" onclick="plusBtn(${element.id})"><span class="material-symbols-outlined">
+              add
+              </span></button>
+              </div>
+              </div>
+              <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
+              add_shopping_cart
+              </span> ADD TO CART  </button>
+              </div>
+              </div>
+            </div>
+           </div>`
+      }
+    }});
+//  for(let i = 0; i < gotten.length; i++){
+//   element = gotten[i];
+//   // console.log(element);
+
+//   if(element.name.toLowerCase().includes(searchValue) || element.description.toLowerCase().includes(searchValue)){
+//     screen.innerHTML += `<div class="searchDiv">
+//     <div class="items">
+//       <img src="${element.image}" alt="">
+//       <p>${element.name}</p>
+//       <p>${element.description}</p>
+//       <p>${element.price}</p>
+//     </div>
+//   </div>`
+//   }
+//  }
+}

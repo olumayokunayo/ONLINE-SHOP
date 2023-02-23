@@ -32,12 +32,18 @@
   <body>
     <main class="main">
       <div class="cart-section">
+        <span id="backBtn" class="back material-symbols-outlined">
+          arrow_back
+          </span>
         <div class="head">
-          <h1>Shopping Cart</h1>
+          <div class="logo">
+            <h1>Shopping Cart</h1>
+            <img src="./images/free-logoa.jpg" alt="">
+          </div>
           <button id="deleteAllBtn">
-            <span class="material-symbols-outlined">
-              remove_shopping_cart
-            </span>
+            <span class="sweep material-symbols-outlined">
+              delete_sweep
+              </span>
           </button>
         </div>
         <div class="heading">
@@ -51,10 +57,10 @@
         </div>
         <p id="show"></p>
         <div class="checkout">
+          <p id="totalAmount">TOTAL: $</p>
           <div class="chk">
             <div id="show2"></div>
           </div>
-          <p id="totalAmount">TOTAL: $</p>
         </div>
       </div>
     </main>

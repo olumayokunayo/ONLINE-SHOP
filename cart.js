@@ -15,15 +15,15 @@ function show() {
              <p class="price">${item.price}</p>
              <p class="quantity">${item.quantity}</p>
              <p class="total">${item.total}</p>
-             <button onclick="delBtn(${i})"><ion-icon name="trash-outline"></ion-icon></button>
+             <button class="del" onclick="delBtn(${i})"><ion-icon name="trash-outline"></ion-icon></button>
            </div>`;
 
-    screen2.innerHTML = `<button
+    screen2.innerHTML = `<button class="chkBtn"
            type="button"
            id="start-payment-button"
            onclick="makePayment(${item.price})"
          >
-           Pay Now
+           CHECKOUT
          </button>`;
   });
 }
@@ -76,3 +76,11 @@ gotten.forEach((element) => {
   totalAmount.textContent = `TOTAL: $ ${cartTotal}`;
 });
 console.log(cartTotal);
+ 
+// BACK TO HOME
+
+let backBtn = document.getElementById("backBtn");
+
+backBtn.addEventListener("click", function(){
+  window.location.href = "index.html"
+})

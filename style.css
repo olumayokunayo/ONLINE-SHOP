@@ -8,7 +8,6 @@ body {
     rgba(255, 192, 203, 0.639),
     rgba(255, 166, 0, 0.642)
   );
-  position: relative;
   font-family: 'Open Sans', sans-serif;
 }
 .item img {
@@ -65,15 +64,25 @@ body {
   height: 2rem;
   position: relative;
   outline: none;
-  border-radius: 5px;
+  border: none;
   padding: 0.5rem;
 }
+.input{
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
 .navItems .search{
-  position: absolute;
+  color: red;
+
+
+  /* position: absolute;
   top: 38%;
   right: 42%;
   height: 3rem;
-  color: red;
+  color: red; */
 }
 .navItems  {
  display: flex;
@@ -489,4 +498,36 @@ hr {
 .signButtons button:hover{
   background-color: #5753534b;
   border-radius: 5px;
+}
+.searchDiv .items{
+  height: 100%;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px 4px #ffffff32;
+  position: relative;
+  margin-right: 1rem;
+}
+.items img {
+ height: 60%;
+  width: 80%;
+  background-color: transparent;
+  transition: all 0.5s ease-in-out;
+}
+.searchDiv {
+  width: 350px;
+  margin-left: 2rem;
+}
+.searchDiv .desc{
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 200px;
+  white-space:nowrap;
 }
