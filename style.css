@@ -267,12 +267,60 @@ body {
   display: none;
   transition: all 0.5s ease-in-out;
 }
-footer p {
-  margin-top: 1rem;
+.footer{
+  display: grid;
+  grid-template-columns: repeat(4, 1.5fr);
+  padding: 1rem;
+  background-color: #000;
+  color: #fff;
 }
-footer a {
+.footer a:hover{
+  color:  #fec0cabb;
+}
+.emailDiv input{
+  border: none;
+  width: 90%;
+  height: 2rem;
+  margin: 1rem 0 1rem 0;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+.emailDiv button{
+  border: none;
+  background-color: #fec0caea;
+  padding: 0.5rem;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+}
+.emailDiv button:hover{
+  background-color: #fec0ca;
+ 
+}
+.categoryDiv a{
   text-decoration: none;
-  color: rgb(24, 24, 24);
+  color:  #fec0ca92;
+  display: block;
+ margin-top: 0.5rem;
+  transition: all 0.5s ease;
+}
+.companyDiv a{
+  text-decoration: none;
+  color:  #fec0ca92;
+  display: block;
+  transition: all 0.5s ease;
+  margin-top: 0.5rem;
+
+}
+.contactDiv a{
+  text-decoration: none;
+  color:  #fec0ca92;
+  transition: all 0.5s ease;
+  margin-top: 0.5rem;
+
+}
+.contactDiv span{
+  color:  #fec0ca92;
 }
 hr {
   width: 100%;
