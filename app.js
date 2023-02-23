@@ -65,53 +65,48 @@ function btnClose(id) {
   const modal = document.querySelector(`#modal-${id}`);
   modal.style.display = "none";
 }
-// document.addEventListener("click", function (e) {
-//   const modal = e.target.closest(".modal");
-//   if (modal) {
-//     modal.style.display = "none";
-//   }
-// });
-
-// document,
-//   addEventListener("keydown", function (e) {
-//     const modal = document.querySelector(".modal");
-//     if (e.key == "Escape" && modal) {
-//       modal.style.display = "none";
-//     }
-//   });
-// BUY BUTTON
 
 function buyBtn(id) {
   const modal = document.querySelector(`#modal-${id}`);
   let inputNum = document.getElementById(`inputNum-${id}`);
-  //   console.log(inputNum.value);
   fetch("https://fakestoreapi.com/products/")
     .then((res) => res.json())
     .then((json) => {
-      //   console.log(json);
-      for (let index = 0; index < json.length; index++) {
-        const product = json[index];
-        if (product.id == id) {
-          let item = {
-            name: product.title,
-            image: product.image,
-            quantity: inputNum.value,
-            price: product.price,
-            total: product.price * inputNum.value,
-          };
-          // console.log(total);
-          let cartArr = JSON.parse(localStorage.getItem("item")) || [];
-          cartArr.push(item);
-          localStorage.setItem("item", JSON.stringify(cartArr));
-          count();
-          updateTotal();
-          modal.style.display = "none";
-          alert(
-            `(${inputNum.value}) ${product.title} have been added to cart!`
-          );
+      let cartArr = JSON.parse(localStorage.getItem("item")) || [];
+      let itemInCart = false;
+      for (let i = 0; i < cartArr.length; i++) {
+        const item = cartArr[i];
+        if (item.id == id) {
+          itemInCart = true;
+          item.quantity =  parseInt(item.quantity) + parseInt(inputNum.value);
+          item.total += item.price * parseInt(inputNum.value);
           break;
         }
       }
+      if (!itemInCart) {
+        for (let index = 0; index < json.length; index++) {
+          const product = json[index];
+          if (product.id == id) {
+            let item = {
+              id: product.id,
+              name: product.title,
+              image: product.image,
+              quantity: inputNum.value,
+              price: product.price,
+              total: product.price * inputNum.value,
+            };
+            cartArr.push(item);
+            break;
+          }
+        }
+      }
+      localStorage.setItem("item", JSON.stringify(cartArr));
+      count();
+      updateTotal();
+      modal.style.display = "none";
+      alert(
+        `(${inputNum.value}) ${cartArr[cartArr.length - 1].name} have been added to cart!`
+      );
     });
 }
 
@@ -461,7 +456,7 @@ function updateTotal() {
   gotten.forEach((element) => {
     // console.log(element);
     cartTotal += element.total;
-    totalBill.textContent = `$ ${cartTotal}`;
+    totalBill.textContent = `$ ${cartTotal.toFixed(2)}`;
   });
   // console.log(cartTotal);
 }
@@ -527,46 +522,44 @@ screen.innerHTML = "";
       console.log(element);
 
       if(element.title.toLowerCase().includes(searchValue) || element.description.toLowerCase().includes(searchValue) || element.category.toLowerCase().includes(searchValue)){
-        screen.innerHTML += `<div class="searchDiv">
-             <div class="items">
-               <img class="img" src="${element.image}" alt="">
-              <p class="title">${element.title}</p>
-               <p class="desc">${element.description}</p>
-              <p class"price">${element.price}</p>
-              <div class="qtyDiv">
-              <p>Quantity: </p> 
-              <div class="qty">
-              <button class="minus" onclick="minusBtn(${element.id})"><span class="material-symbols-outlined">
-              remove
-              </span></button><span><input type="text" id="inputNum-${element.id}" value="1"></span>
-    
-              <button class="plus" onclick="plusBtn(${element.id})"><span class="material-symbols-outlined">
-              add
-              </span></button>
-              </div>
-              </div>
-              <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
-              add_shopping_cart
-              </span> ADD TO CART  </button>
-              </div>
-              </div>
-            </div>
-           </div>`
+        screen.innerHTML += `<div class="itemContainer">
+        <div class="item">
+  <img src="${element.image}" class="img" />
+  <p class="title"> ${element.title}</p>
+  <div class="priceCart">
+  <p class="rating"><ion-icon name="star-half-outline"></ion-icon> ${element.rating.rate}</p>
+  <p class="price">$${element.price}</p>
+  </div>
+  <button class="btnOpenModal" onclick="btnOpen(${element.id})"><ion-icon name="add-outline"></ion-icon></button>
+<div id="modal-${element.id}" class="modal">
+<div class="modalOverlay" onclick="modalOver()"></div>
+<div class="modalContent">
+<button class="closeBtn" onclick="btnClose(${element.id})"><span class="material-symbols-outlined">
+close
+</span></button>
+<img src="${element.image}" class="img" />
+<p class="title"> ${element.title}</p>
+<p class="price">$${element.price}</p>
+<div class="qtyDiv">
+<p>Quantity: </p> 
+<div class="qty">
+<button class="minus" onclick="minusBtn(${element.id})"><span class="material-symbols-outlined">
+remove
+</span></button><span><input type="text" id="inputNum-${element.id}" value="1"></span>
+
+<button class="plus" onclick="plusBtn(${element.id})"><span class="material-symbols-outlined">
+add
+</span></button>
+</div>
+</div>
+<button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
+add_shopping_cart
+</span> ADD TO CART  </button>
+</div>
+</div>
+</div>
+</div>`
       }
     }});
-//  for(let i = 0; i < gotten.length; i++){
-//   element = gotten[i];
-//   // console.log(element);
+  }
 
-//   if(element.name.toLowerCase().includes(searchValue) || element.description.toLowerCase().includes(searchValue)){
-//     screen.innerHTML += `<div class="searchDiv">
-//     <div class="items">
-//       <img src="${element.image}" alt="">
-//       <p>${element.name}</p>
-//       <p>${element.description}</p>
-//       <p>${element.price}</p>
-//     </div>
-//   </div>`
-//   }
-//  }
-}

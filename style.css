@@ -30,7 +30,7 @@ body {
   box-shadow: 0px 4px 4px 4px #ffffff32;
   position: relative;
 }
-* .itemContainer {
+ .itemContainer {
   margin-left: 3rem;
   width: 20%;
 }
@@ -76,13 +76,6 @@ body {
 }
 .navItems .search{
   color: red;
-
-
-  /* position: absolute;
-  top: 38%;
-  right: 42%;
-  height: 3rem;
-  color: red; */
 }
 .navItems  {
  display: flex;
@@ -339,7 +332,7 @@ hr {
   position: absolute;
   z-index: 1000;
   left: 7%;
-  top: 0;
+  top: -4%;
   overflow: hidden;
   background-color: yellow;
   border-bottom-left-radius: 12px;
@@ -365,13 +358,13 @@ hr {
   font-size: 1rem;
   font-weight: 400;
   text-transform: lowercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: -0.2rem;
   text-overflow: inherit;
   width: 200px;
   white-space: normal;
 }
 .modal .price {
-  margin-bottom: 1rem;
+  margin-bottom: -0.5rem;
   color: #fff;
 }
 .modal .buyBtn {
@@ -406,8 +399,14 @@ hr {
   align-items: center;
   justify-content: center;
 }
+.qtyDiv p{
+  margin-bottom: 3.3rem;
+  color: red;
+}
 .modal input {
   width: 22%;
+  margin-bottom: 3.4rem;
+  height: 1.4rem;
 }
 
 .modal .plus {
@@ -425,7 +424,7 @@ hr {
   border: none;
   background: none;
   position: absolute;
-  left: 54%;
+  left: 57%;
   top: 0;
   background-color: rgba(70, 73, 73, 0.235);
   height: 1.4rem;
@@ -456,7 +455,7 @@ hr {
 .signUpPage{
   position: absolute;
   right: 20%;
-  top: 5%;
+  top: 16%;
   z-index: 9999999;
   background-color: #fff;
   width: 200px;
@@ -510,15 +509,17 @@ hr {
   position: relative;
   margin-right: 1rem;
 }
-.items img {
- height: 60%;
+.searchDiv .img {
+ height: 100%;
   width: 80%;
   background-color: transparent;
   transition: all 0.5s ease-in-out;
 }
 .searchDiv {
+  height: 100%;
   width: 350px;
   margin-left: 2rem;
+
 }
 .searchDiv .desc{
   font-size: 1rem;
@@ -530,4 +531,19 @@ hr {
   overflow: hidden;
   width: 200px;
   white-space:nowrap;
+}
+.items{
+  width: 100px;
+  height: 50%;
+}
+.inputType{
+  width: 20%;
+}
+
+.searchDiv .qtyDiv {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }

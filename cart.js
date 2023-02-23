@@ -33,6 +33,7 @@ function delBtn(i) {
   gotten.splice(i, 1);
   localStorage.setItem("item", JSON.stringify(gotten));
   show();
+  window.location.reload();
 }
 
 let deleteAllBtn = document.getElementById("deleteAllBtn");
@@ -73,7 +74,7 @@ function makePayment() {
 let cartTotal = 0;
 gotten.forEach((element) => {
   cartTotal += element.total;
-  totalAmount.textContent = `TOTAL: $ ${cartTotal}`;
+  totalAmount.textContent = `TOTAL: $ ${cartTotal.toFixed(2)}`;
 });
 console.log(cartTotal);
  
