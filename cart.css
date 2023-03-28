@@ -18,14 +18,14 @@
     margin-bottom: 2rem;
   }
   .main .back{
-    color: #fff;
+    color: orange;
     font-size: 2rem;
     margin-bottom: 2rem;
     cursor: pointer;
     transition: all 0.5s ease;
   }
   .main .back:hover{
-    color: orange;
+    color: #222;
   }
   .cart-item img {
     height: 100px;
@@ -79,38 +79,24 @@
   }
   .cart-section {
     padding: 2rem;
-    background-color: #000;
-    width: 860px;
+    background-color: #fff;
+    /* width: 1000p   x; */
     height: fit-content;
     border-radius: 5px;
   }
   .del{
     color: black;
+    border: none;
+    background: none;
     transition: all 0.5s ease;
   }
   .del:hover{
     color: orange;
   }
-  #show {
-    width: 800px;
-  }
-  .heading {
-    width: 800px;
-    display: flex;
-    align-items: center;
-    color: #fff;
-    gap: 2rem;
-  }
-  .pqt {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 2rem;
-    gap: 3rem;
-  }
-  .t {
-    margin-left: 4rem;
-  }
+  /* #show {
+    width: 1200px;
+  } */
+
   .head {
     display: flex;
     align-items: center;
@@ -134,7 +120,7 @@
   }
   .head .sweep{
     height: 4rem;
-    color: #fff;
+    color: orange;
     font-size: 3rem;
     transition: all 0.5s ease
   }
@@ -149,11 +135,8 @@
     margin-top: -1.9rem;
     background-color: black;
   }
-  .logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
+  .logo h1{
+    color: #222;
   }
   .chkBtn.chkBtn{
     color: rgb(0, 0, 0);
@@ -164,4 +147,54 @@
   .chkBtn.chkBtn:hover{
     color: #fff;
   }
-  
+  .tableImg{
+    width: 50%;
+    height: 150px;
+  }
+ table {
+  width: 1000px;
+ }
+ .plus{
+  border: none;
+  background-color: #222;
+  color: #fff;
+ }
+ .minus{
+  border: none;
+  background-color: #222;
+  color: #fff;
+ }
+
+@media (max-width: 414px) {
+
+  table {
+    padding: 0;
+    margin: 0;
+    width: 90%;
+    font-size: 16px;
+  }
+  th, td {
+    padding: 4px;
+  }
+ 
+  .tableImg{
+    width: 100%;
+   height: 100%;
+  }
+  .tableName{
+    font-size: 0.8rem;
+  }
+  .main{
+    background-color: rgb(94, 255, 0);
+    padding: 0;
+    width: fit-content;
+    /* height: 100vh; */
+    /* overflow-x: hidden; */
+  }
+.cart-section{
+  /* background-color: red; */
+  width: 100%;
+  margin: 0;
+}
+
+}

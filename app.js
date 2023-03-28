@@ -1,5 +1,4 @@
 // DISPLAY API ON SCREEN
-
 let screen = document.getElementById("show");
 
 fetch("https://fakestoreapi.com/products/")
@@ -10,62 +9,50 @@ fetch("https://fakestoreapi.com/products/")
       const element = json[index];
       // console.log(element);
       screen.innerHTML += `<div class="itemContainer">
-              <div class="item">
-        <img src="${element.image}" class="img" />
-        <p class="title"> ${element.title}</p>
-        <div class="priceCart">
-        <p class="rating"><ion-icon name="star-half-outline"></ion-icon> ${element.rating.rate}</p>
-        <p class="price">$${element.price}</p>
-        </div>
-        <button class="btnOpenModal" onclick="btnOpen(${element.id})"><ion-icon name="add-outline"></ion-icon></button>
-    <div id="modal-${element.id}" class="modal">
-    <div class="modalOverlay" onclick="modalOver()"></div>
-    <div class="modalContent">
-    <button class="closeBtn" onclick="btnClose(${element.id})"><span class="material-symbols-outlined">
-    close
-    </span></button>
+      <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal-${element.id}">
     <img src="${element.image}" class="img" />
     <p class="title"> ${element.title}</p>
+    <div class="priceCart">
     <p class="price">$${element.price}</p>
-    <div class="qtyDiv">
-    <p>Quantity: </p> 
-    <div class="qty">
-    <button class="minus" onclick="minusBtn(${element.id})"><span class="material-symbols-outlined">
-    remove
-    </span></button><span><input type="text" id="inputNum-${element.id}" value="1"></span>
-    
-    <button class="plus" onclick="plusBtn(${element.id})"><span class="material-symbols-outlined">
-    add
-    </span></button>
     </div>
     </div>
-    <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
-    add_shopping_cart
-    </span> ADD TO CART  </button>
     </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal-${element.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h1>Description</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <img src="${element.image}" class="img" />
+        <p class="title"> ${element.title}</p>
+        <p class="price">$${element.price}</p>
+        <p class="desc">${element.description}</p>
+        <div class="qtyDiv">
+          <p class="quantity">Quantity: </p> 
+          <div class="sumDiv">
+            <button class="minus" onclick="minusBtn(${element.id})">-</button>
+            <input type="text" id="inputNum-${element.id}" value="1">
+             <button class="plus" onclick="plusBtn(${element.id})">+</button>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
+        add_shopping_cart
+        </span>ADD TO CART</button>
+        </div>
       </div>
-      </div>
     </div>
+  </div>
    `;
     }
   });
 
-//   OPEN MODAL
-
-function btnOpen(id) {
-  console.log(`hey${id}`);
-  //   console.log(productID);
-  const modal = document.querySelector(`#modal-${id}`);
-  modal.style.display = "block";
-}
-
-// CLOSE MODAL
-
-function btnClose(id) {
-  const modal = document.querySelector(`#modal-${id}`);
-  modal.style.display = "none";
-}
-
+// BUY BUTTON
 function buyBtn(id) {
   const modal = document.querySelector(`#modal-${id}`);
   let inputNum = document.getElementById(`inputNum-${id}`);
@@ -103,7 +90,7 @@ function buyBtn(id) {
       localStorage.setItem("item", JSON.stringify(cartArr));
       count();
       updateTotal();
-      modal.style.display = "none";
+      // modal.style.display = "none";
       alert(
         `(${inputNum.value}) ${cartArr[cartArr.length - 1].name} have been added to cart!`
       );
@@ -204,239 +191,80 @@ let womensBtn = document.getElementById("womensBtn");
 let jeweleryBtn = document.getElementById("jeweleryBtn");
 let electBtn = document.getElementById("electBtn");
 
+let carousel = document.querySelector(".carousel");
+function fetchCategory(categoryName, url){
+  fetch(url)
+  .then((res) => res.json())
+  .then((json) => {
+    screen.innerHTML = "";
+     let filteredData = json.filter((element)=>element.category.toLowerCase()===categoryName.toLowerCase())
+    //  console.log(filteredData);
+    filteredData.forEach((element) => {
+      screen.innerHTML += `<div class="itemContainer">
+      <div class="item" data-bs-toggle="modal" data-bs-target="#exampleModal-${element.id}">
+    <img src="${element.image}" class="img" />
+    <p class="title"> ${element.title}</p>
+    <div class="priceCart">
+    <p class="price">$${element.price}</p>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal-${element.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h1>Description</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <img src="${element.image}" class="img" />
+        <p class="title"> ${element.title}</p>
+        <p class="price">$${element.price}</p>
+        <p class="desc">${element.description}</p>
+        <div class="qtyDiv">
+          <p class="quantity">Quantity: </p> 
+          <div class="sumDiv">
+            <button class="minus" onclick="minusBtn(${element.id})">-</button>
+            <input type="text" id="inputNum-${element.id}" value="1">
+             <button class="plus" onclick="plusBtn(${element.id})">+</button>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
+        add_shopping_cart
+        </span>ADD TO CART</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+                updateShow.textContent = `${categoryName} categories`;
+                showingOf.textContent = `Showing 1-${filteredData.length} of ${filteredData.length} results`
+                mainImage.style.display = "none"
+                carousel.style.display = "none"
+    })
+    })}
+
 // MEN'S CATEGORY
-
 mensBtn.addEventListener("click", function () {
-  fetch("https://fakestoreapi.com/products/")
-    .then((res) => res.json())
-    .then((json) => {
-      screen.innerHTML = "";
-      for (let index = 0; index < json.length; index++) {
-        const element = json[index];
-        // console.log(element);
-        const category = element.category.toLowerCase();
-        // console.log(category);
-
-        if (category == "men's clothing") {
-          screen.innerHTML += `<div class="category">
-                <div class="item">
-                <img src="${element.image}" class="img" />
-                <p class="title">${element.title}</p>
-                <p class="rating">
-                <ion-icon name="star-half-outline"></ion-icon> ${element.rating.rate}
-                </p>
-                <p class="price">$${element.price}</p>
-                <button class="btnOpenModal" onclick="btnOpen(${element.id})"><ion-icon name="add-outline"></ion-icon></button>
-                <div id="modal-${element.id}" class="modal">
-                <div class="modalOverlay" onclick="modalOver()"></div>
-                <div class="modalContent">
-                <button class="closeBtn" onclick="btnClose(${element.id})"><span class="material-symbols-outlined">
-                close
-                </span></button>
-                <img src="${element.image}" class="img" />
-                <p class="title"> ${element.title}</p>
-                <p class="price">$${element.price}</p>
-                <div class="qtyDiv">
-                <p>Quantity: </p> 
-                <div class="qty">
-                <button class="minus" onclick="minusBtn(${element.id})"><span class="material-symbols-outlined">
-                remove
-                </span></button><span><input type="text" id="inputNum-${element.id}" value="1"></span>
-    
-                <button class="plus" onclick="plusBtn(${element.id})"><span class="material-symbols-outlined">
-                add
-                </span></button>
-                </div>
-                </div>
-                <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
-                add_shopping_cart
-                </span> ADD TO CART  </button>
-                </div>
-                </div>
-                </div>
-                </div>`;
-          updateShow.textContent = "Men's Categories";
-          showingOf.textContent = "Showing 1-4 of 4 results"
-        }
-      }
-    });
+  fetchCategory("Men's clothing", "https://fakestoreapi.com/products/")
 });
 
-
 // WOMEN'S CATEGORY
-
 womensBtn.addEventListener("click", function () {
-  fetch("https://fakestoreapi.com/products/")
-    .then((res) => res.json())
-    .then((json) => {
-      screen.innerHTML = "";
-      for (let index = 0; index < json.length; index++) {
-        const element = json[index];
-        // console.log(element);
-        const category = element.category.toLowerCase();
-        // console.log(category);
-
-        if (category == "women's clothing") {
-          screen.innerHTML += `<div class="category">
-          <div class="item">
-          <img src="${element.image}" class="img" />
-          <p class="title">${element.title}</p>
-          <p class="rating">
-          <ion-icon name="star-half-outline"></ion-icon> ${element.rating.rate}
-          </p>
-          <p class="price">$${element.price}</p>
-          <button class="btnOpenModal" onclick="btnOpen(${element.id})"><ion-icon name="add-outline"></ion-icon></button>
-          <div id="modal-${element.id}" class="modal">
-          <div class="modalOverlay" onclick="modalOver()"></div>
-          <div class="modalContent">
-          <button class="closeBtn" onclick="btnClose(${element.id})"><span class="material-symbols-outlined">
-          close
-          </span></button>
-          <img src="${element.image}" class="img" />
-          <p class="title"> ${element.title}</p>
-          <p class="price">$${element.price}</p>
-          <div class="qtyDiv">
-          <p>Quantity: </p> 
-          <div class="qty">
-          <button class="minus" onclick="minusBtn(${element.id})"><span class="material-symbols-outlined">
-          remove
-          </span></button><span><input type="text" id="inputNum-${element.id}" value="1"></span>
-
-          <button class="plus" onclick="plusBtn(${element.id})"><span class="material-symbols-outlined">
-          add
-          </span></button>
-          </div>
-          </div>
-          <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
-          add_shopping_cart
-          </span> ADD TO CART  </button>
-          </div>
-          </div>
-          </div>
-          </div>`;
-          updateShow.textContent = "Women's Categories";
-          showingOf.textContent = "Showing 1-4 of 4 results"
-        }
-      }
-    });
+ fetchCategory("Women's clothing","https://fakestoreapi.com/products/")
 });
 
 // JEWERELY CATEGORY
-
 jeweleryBtn.addEventListener("click", function () {
-  fetch("https://fakestoreapi.com/products/")
-    .then((res) => res.json())
-    .then((json) => {
-      screen.innerHTML = "";
-      for (let index = 0; index < json.length; index++) {
-        const element = json[index];
-        // console.log(element);
-        const category = element.category.toLowerCase();
-        // console.log(category);
-
-        if (category == "jewelery") {
-          screen.innerHTML += `<div class="category">
-          <div class="item">
-          <img src="${element.image}" class="img" />
-          <p class="title">${element.title}</p>
-          <p class="rating">
-          <ion-icon name="star-half-outline"></ion-icon> ${element.rating.rate}
-          </p>
-          <p class="price">$${element.price}</p>
-          <button class="btnOpenModal" onclick="btnOpen(${element.id})"><ion-icon name="add-outline"></ion-icon></button>
-          <div id="modal-${element.id}" class="modal">
-          <div class="modalOverlay" onclick="modalOver()"></div>
-          <div class="modalContent">
-          <button class="closeBtn" onclick="btnClose(${element.id})"><span class="material-symbols-outlined">
-          close
-          </span></button>
-          <img src="${element.image}" class="img" />
-          <p class="title"> ${element.title}</p>
-          <p class="price">$${element.price}</p>
-          <div class="qtyDiv">
-          <p>Quantity: </p> 
-          <div class="qty">
-          <button class="minus" onclick="minusBtn(${element.id})"><span class="material-symbols-outlined">
-          remove
-          </span></button><span><input type="text" id="inputNum-${element.id}" value="1"></span>
-
-          <button class="plus" onclick="plusBtn(${element.id})"><span class="material-symbols-outlined">
-          add
-          </span></button>
-          </div>
-          </div>
-          <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
-          add_shopping_cart
-          </span> ADD TO CART  </button>
-          </div>
-          </div>
-          </div>
-          </div>`;
-          updateShow.textContent = "Jewerely Categories";
-          showingOf.textContent = "Showing 1-6 of 6 results"
-
-        }
-      }
-    });
+ fetchCategory("jewelery", "https://fakestoreapi.com/products/") 
 });
 
 // ELECTRONICS CATEGORY
-
 electBtn.addEventListener("click", function () {
-  fetch("https://fakestoreapi.com/products/")
-    .then((res) => res.json())
-    .then((json) => {
-      screen.innerHTML = "";
-      for (let index = 0; index < json.length; index++) {
-        const element = json[index];
-        // console.log(element);
-        const category = element.category.toLowerCase();
-        // console.log(category);
-
-        if (category == "electronics") {
-          screen.innerHTML += `<div class="category">
-          <div class="item">
-          <img src="${element.image}" class="img" />
-          <p class="title">${element.title}</p>
-          <p class="rating">
-          <ion-icon name="star-half-outline"></ion-icon> ${element.rating.rate}
-          </p>
-          <p class="price">$${element.price}</p>
-          <button class="btnOpenModal" onclick="btnOpen(${element.id})"><ion-icon name="add-outline"></ion-icon></button>
-          <div id="modal-${element.id}" class="modal">
-          <div class="modalOverlay" onclick="modalOver()"></div>
-          <div class="modalContent">
-          <button class="closeBtn" onclick="btnClose(${element.id})"><span class="material-symbols-outlined">
-          close
-          </span></button>
-          <img src="${element.image}" class="img" />
-          <p class="title"> ${element.title}</p>
-          <p class="price">$${element.price}</p>
-          <div class="qtyDiv">
-          <p>Quantity: </p> 
-          <div class="qty">
-          <button class="minus" onclick="minusBtn(${element.id})"><span class="material-symbols-outlined">
-          remove
-          </span></button><span><input type="text" id="inputNum-${element.id}" value="1"></span>
-
-          <button class="plus" onclick="plusBtn(${element.id})"><span class="material-symbols-outlined">
-          add
-          </span></button>
-          </div>
-          </div>
-          <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
-          add_shopping_cart
-          </span> ADD TO CART  </button>
-          </div>
-          </div>
-          </div>
-          </div>`;
-          updateShow.textContent = "Electronic Categories";
-          showingOf.textContent = "Showing 1-6 of 6 results"
-
-        }
-      }
-    });
+  fetchCategory("electronics", "https://fakestoreapi.com/products/")
 });
 
 // COUNT
@@ -453,11 +281,15 @@ function updateTotal() {
   let cartTotal = 0;
   let totalBill = document.getElementById("totalBill");
   let gotten = JSON.parse(localStorage.getItem("item"));
+  // console.log(gotten);
+  if(gotten){
   gotten.forEach((element) => {
     // console.log(element);
     cartTotal += element.total;
     totalBill.textContent = `$ ${cartTotal.toFixed(2)}`;
   });
+  }
+
   // console.log(cartTotal);
 }
 updateTotal();
@@ -522,44 +354,52 @@ screen.innerHTML = "";
       console.log(element);
 
       if(element.title.toLowerCase().includes(searchValue) || element.description.toLowerCase().includes(searchValue) || element.category.toLowerCase().includes(searchValue)){
-        screen.innerHTML += `<div class="itemContainer">
-        <div class="item">
-  <img src="${element.image}" class="img" />
-  <p class="title"> ${element.title}</p>
-  <div class="priceCart">
-  <p class="rating"><ion-icon name="star-half-outline"></ion-icon> ${element.rating.rate}</p>
-  <p class="price">$${element.price}</p>
-  </div>
-  <button class="btnOpenModal" onclick="btnOpen(${element.id})"><ion-icon name="add-outline"></ion-icon></button>
-<div id="modal-${element.id}" class="modal">
-<div class="modalOverlay" onclick="modalOver()"></div>
-<div class="modalContent">
-<button class="closeBtn" onclick="btnClose(${element.id})"><span class="material-symbols-outlined">
-close
-</span></button>
-<img src="${element.image}" class="img" />
-<p class="title"> ${element.title}</p>
-<p class="price">$${element.price}</p>
-<div class="qtyDiv">
-<p>Quantity: </p> 
-<div class="qty">
-<button class="minus" onclick="minusBtn(${element.id})"><span class="material-symbols-outlined">
-remove
-</span></button><span><input type="text" id="inputNum-${element.id}" value="1"></span>
+        screen.innerHTML += `
+        <div class="itemContainer">
+      <div class="item" onclick="btnOpen(${element.id})" data-bs-toggle="modal" data-bs-target="#exampleModal-${element.id}">
+    <img src="${element.image}" class="img" />
+    <p class="title"> ${element.title}</p>
+    <div class="priceCart">
+    <p class="price">$${element.price}</p>
+    </div>
+    </div>
+    </div>
+    </div>
 
-<button class="plus" onclick="plusBtn(${element.id})"><span class="material-symbols-outlined">
-add
-</span></button>
-</div>
-</div>
-<button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
-add_shopping_cart
-</span> ADD TO CART  </button>
-</div>
-</div>
-</div>
-</div>`
+    <div class="modal fade" id="exampleModal-${element.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h1>Description</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="screen3">
+        <img src="${element.image}" class="img" />
+        <p class="title"> ${element.title}</p>
+        <p class="price">$${element.price}</p>
+        <p class="desc">${element.description}</p>
+        <div class="qtyDiv">
+          <p class="quantity">Quantity: </p> 
+          <div class="sumDiv">
+            <button class="minus" onclick="minusBtn(${element.id})">-</button>
+            <input type="text" id="inputNum-${element.id}" value="1">
+             <button class="plus" onclick="plusBtn(${element.id})">+</button>
+          </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <button class="buyBtn" onclick="buyBtn(${element.id})"><span class="material-symbols-outlined">
+        add_shopping_cart
+        </span>ADD TO CART</button>
+        </div>
+      </div>
+    </div>
+  </div>`
       }
     }});
   }
+
+
+
+
 

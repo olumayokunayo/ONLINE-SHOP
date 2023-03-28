@@ -4,11 +4,11 @@
   box-sizing: border-box;
 }
 body {
-  background: linear-gradient(
-    rgba(255, 192, 203, 0.639),
-    rgba(255, 166, 0, 0.642)
-  );
-  font-family: 'Open Sans', sans-serif;
+  background-color: #ffffff34;
+  font-family: "Open Sans", sans-serif;
+}
+.menuBtn {
+  display: none;
 }
 .item img {
   height: 120px;
@@ -30,7 +30,7 @@ body {
   box-shadow: 0px 4px 4px 4px #ffffff32;
   position: relative;
 }
- .itemContainer {
+.itemContainer {
   margin-left: 3rem;
   width: 20%;
 }
@@ -46,17 +46,18 @@ body {
 }
 /* NAV */
 .nav {
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: rgb(38, 38, 36);
+  background-color: #000;
   position: sticky;
   width: 100%;
   top: 0;
   z-index: 999999;
   padding: 1rem;
 }
-.nav img{
+.nav img {
   height: 50px;
 }
 .navItems input {
@@ -67,70 +68,51 @@ body {
   border: none;
   padding: 0.5rem;
 }
-.input{
+.input {
+  height: 2.5 rem;
+  border-radius: 20px;
   padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #fff;
 }
-.navItems .search{
+.navItems .search {
   color: red;
 }
-.navItems  {
- display: flex;
- align-items: center;
- gap: 2rem;
-
+.navItems {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 .account {
   padding: 0.5rem;
-  background-color: rgba(73, 63, 63, 0.653);
+  /* background-color: rgba(73, 63, 63, 0.653); */
   border-radius: 5px;
-  color: #fff;
+  color: #ffffffc0;
   display: flex;
   gap: 1rem;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   outline: none;
+  transition: all 0.5s ease;
 }
-.account:hover{
-  background-color: rgba(73, 63, 63, 0.861);
-}
-
-/* CART */
-
-.cart ion-icon:hover {
+.account:hover {
   color: rgb(233, 133, 44);
 }
-.cart ion-icon {
-  font-size: 2rem;
-  color: rgb(238, 231, 231);
-}
-.cart span {
-  font-size: 1rem;
-  color: rgb(238, 231, 231);
-}
-.cart a {
-  text-decoration: none;
-  display: flex;
-  font-size: 2rem;
-  align-items: center;
-  justify-content: center;
-  gap: 3rem;
-}
+
 /* ASIDE */
 
 .aside {
   position: sticky;
   left: 0;
   width: 15%;
-  box-shadow: 0px 2px 2px 2px rgba(238, 231, 231, 0.253);
+  box-shadow: 0px 2px 2px 2px rgba(238, 231, 231, 0.962);
   height: 50vh;
   top: 10%;
   padding: 1rem;
-  background-color: rgba(73, 63, 63, 0.508);
+  background-color: #fff;
 }
 .aside h4 {
   font-size: 1.2rem;
@@ -154,7 +136,7 @@ body {
   transition: all 0.5s ease;
 }
 .asideItems button:hover {
-  background-color: rgb(233, 133, 44);
+  color: rgb(233, 133, 44);
 }
 .rightPage {
   width: 85%;
@@ -222,8 +204,7 @@ body {
 }
 .head {
   text-decoration: none;
-  color: #fff;
-  text-transform: uppercase;
+  color: #ffffffc0;
 }
 .item .title {
   font-size: 1rem;
@@ -240,87 +221,89 @@ body {
 .item .price {
   font-size: 1.7rem;
 }
-.priceCart {
-  background-color: pink;
+.priceCart,
+.itemCart {
+  background-color: #222;
   display: flex;
   gap: 0.5rem;
   border-radius: 5px;
   font-size: 1rem;
   align-items: center;
   justify-content: space-around;
-}
-.priceCart button {
-  border: none;
-  background-color: transparent;
-  font-size: 2rem;
-  width: 100%;
-  color: rgba(0, 128, 0, 0.815);
-  font-weight: 600;
-  padding: 0.5rem;
+  color: #fff;
   transition: all 0.5s ease;
-  cursor: pointer;
 }
-.priceCart button:hover {
-  color: rgba(255, 0, 0, 0.566);
+.priceCart:hover {
+  color: rgb(233, 133, 44);
 }
 ::-webkit-scrollbar {
   display: none;
   transition: all 0.5s ease-in-out;
 }
-.footer{
+footer {
+  background-color: #000000a5;
+}
+.copy {
+  margin-bottom: 0;
+  text-align: center;
+  color: #fff;
+}
+.footer {
+  /* height: fit-content; */
   display: grid;
   grid-template-columns: repeat(4, 1.5fr);
   padding: 1rem;
-  background-color: #000;
+
   color: #fff;
 }
-.footer a:hover{
-  color:  #fec0cabb;
+.footer a:hover {
+  color: #fec0cabb;
 }
-.emailDiv input{
+.footer h6 {
+  font-size: 0.8rem;
+}
+.emailDiv input {
   border: none;
   width: 90%;
-  height: 2rem;
+  height: 1rem;
   margin: 1rem 0 1rem 0;
   outline: none;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 5px;
 }
-.emailDiv button{
+.emailDiv button {
+  font-size: 0.8rem;
   border: none;
-  background-color: #fec0caea;
+  background-color: #fff;
   padding: 0.5rem;
   border-radius: 10px;
   transition: all 0.5s ease;
 }
-.emailDiv button:hover{
+.emailDiv button:hover {
   background-color: #fec0ca;
- 
 }
-.categoryDiv a{
+.categoryDiv a {
   text-decoration: none;
-  color:  #fec0ca92;
+  color: #222;
   display: block;
- margin-top: 0.5rem;
+  margin-top: 0.5rem;
   transition: all 0.5s ease;
 }
-.companyDiv a{
+.companyDiv a {
   text-decoration: none;
-  color:  #fec0ca92;
+  color: #222;
   display: block;
   transition: all 0.5s ease;
   margin-top: 0.5rem;
-
 }
-.contactDiv a{
+.contactDiv a {
   text-decoration: none;
-  color:  #fec0ca92;
+  color: #222;
   transition: all 0.5s ease;
   margin-top: 0.5rem;
-
 }
-.contactDiv span{
-  color:  #fec0ca92;
+.contactDiv span {
+  color: #222;
 }
 hr {
   width: 100%;
@@ -371,125 +354,40 @@ hr {
 
 /* MODAL */
 
-.modal img:hover {
-  transform: none;
-}
 .modal {
   display: none;
-  height: 340px;
-  position: absolute;
-  z-index: 1000;
-  left: 7%;
-  top: -4%;
-  overflow: hidden;
-  background-color: yellow;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  margin-top: 3rem;
 }
-.modalOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.modal-body img {
+  width: 20%;
 }
-.modalContent {
-  position: relative;
-  padding: 20px;
-  max-width: 1000px;
-  height: 100%;
-  background-color: rgb(190, 193, 99);
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-.modal .title {
-  font-size: 1rem;
-  font-weight: 400;
-  text-transform: lowercase;
-  margin-bottom: -0.2rem;
-  text-overflow: inherit;
-  width: 200px;
-  white-space: normal;
-}
-.modal .price {
-  margin-bottom: -0.5rem;
-  color: #fff;
-}
-.modal .buyBtn {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  background-color: rgba(30, 163, 181, 0.765);
-  border: none;
-  height: 2rem;
-  border-radius: 50px;
-  transition: all 0.5s ease;
-}
-.modal .buyBtn:hover {
-  background-color: rgb(30, 163, 181);
-}
-.buyBtn .material-symbols-outlined {
-  font-size: 1rem;
-  margin-right: 0.5rem;
-}
-.qtyDiv {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.qty {
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.qtyDiv p{
-  margin-bottom: 3.3rem;
-  color: red;
-}
-.modal input {
-  width: 22%;
-  margin-bottom: 3.4rem;
-  height: 1.4rem;
+.modal-body .title {
+  font-size: 1.5rem;
 }
 
-.modal .plus {
-  height: 1px;
-  border: none;
-  background: none;
-  position: absolute;
-  top: 0;
-  right: 8%;
-  background-color: rgba(70, 73, 73, 0.235);
-  height: 1.4rem;
+.modal-body .price {
+  font-size: 1.2rem;
+  color: green;
 }
-.modal .minus {
-  height: 1px;
-  border: none;
-  background: none;
-  position: absolute;
-  left: 57%;
-  top: 0;
-  background-color: rgba(70, 73, 73, 0.235);
-  height: 1.4rem;
-  transition: all 0.5s ease;
+.modal-body .desc {
+  line-height: 1.6;
 }
-.modal .minus:hover,
-.modal .plus:hover {
-  background-color: rgba(70, 73, 73, 0.444);
+.quantity {
+  color: green;
 }
-.modal .closeBtn {
-  position: absolute;
-  right: 0;
-  top: 0;
+.sumDiv input {
+  width: 5%;
+}
+.minus,
+.plus {
+  width: 3%;
+}
+.buyBtn {
+  background-color: green;
+  color: #fff;
   border: none;
-  background: none;
-  transition: all 0.5s ease;
-  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 10px;
 }
 .btnOpenModal {
   margin: 1rem 0 0 6rem;
@@ -500,7 +398,7 @@ hr {
   font-weight: 500;
 }
 
-.signUpPage{
+.signUpPage {
   position: absolute;
   right: 20%;
   top: 16%;
@@ -510,30 +408,30 @@ hr {
   padding: 1rem;
   height: 230px;
   border-radius: 5px;
-  box-shadow: 2px 2px 2px 2px  #ffffff29;
+  box-shadow: 2px 2px 2px 2px #ffffff29;
 }
-.signUpPageDiv{
+.signUpPageDiv {
   display: none;
 }
-.signUpPage .signInBtn{
+.signUpPage .signInBtn {
   border: none;
   border-radius: 5px;
   color: #fff;
-  width:100%;
+  width: 100%;
   background-color: rgba(233, 132, 44, 0.933);
   padding: 0.5rem 2rem;
   transition: all 0.5s ease;
 }
-.signUpPage a:hover{
+.signUpPage a:hover {
   background-color: rgb(233, 133, 44);
 }
-.signButtons{
+.signButtons {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 0.5rem;
 }
-.signButtons button{
+.signButtons button {
   border: none;
   background: none;
   padding: 0.2rem;
@@ -542,11 +440,11 @@ hr {
   align-items: center;
   transition: all 0.5s ease;
 }
-.signButtons button:hover{
+.signButtons button:hover {
   background-color: #5753534b;
   border-radius: 5px;
 }
-.searchDiv .items{
+.searchDiv .items {
   height: 100%;
   width: 100%;
   margin-top: 1rem;
@@ -558,7 +456,7 @@ hr {
   margin-right: 1rem;
 }
 .searchDiv .img {
- height: 100%;
+  height: 100%;
   width: 80%;
   background-color: transparent;
   transition: all 0.5s ease-in-out;
@@ -567,9 +465,8 @@ hr {
   height: 100%;
   width: 350px;
   margin-left: 2rem;
-
 }
-.searchDiv .desc{
+.searchDiv .desc {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
@@ -578,13 +475,13 @@ hr {
   text-overflow: ellipsis;
   overflow: hidden;
   width: 200px;
-  white-space:nowrap;
+  white-space: nowrap;
 }
-.items{
+.items {
   width: 100px;
   height: 50%;
 }
-.inputType{
+.inputType {
   width: 20%;
 }
 
@@ -594,4 +491,283 @@ hr {
   align-items: center;
   justify-content: center;
   position: relative;
+}
+/* .hidden{
+  display: none;
+} */
+/* .sumDiv{
+align-items: center;
+justify-content: center;
+} */
+.cart a {
+  text-decoration: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.circle {
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  background-color: red;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  padding: 0.5rem;
+  right: 0;
+  /* top: -10%; */
+}
+
+.cartDiv {
+  display: flex;
+  position: relative;
+}
+.cartIcon {
+  font-size: 2.5rem;
+  color: #ffffffc0;
+}
+.totalBill {
+  color: #ffffffc0;
+}
+.cart a {
+  text-decoration: none;
+}
+@media (max-width: 1010px) {
+  .imgDiv {
+    display: none;
+  }
+  .mainImage {
+    width: 100%;
+    /* position: relative; */
+  }
+  .input {
+    display: none;
+  }
+  .item {
+    width: 100%;
+  }
+  .nav {
+    width: 100%;
+  }
+  .aside {
+    position: sticky;
+    left: 0;
+    width: 15%;
+    box-shadow: 0px 2px 2px 2px rgba(238, 231, 231, 0.428);
+    height: fit-content;
+    top: 5%;
+    padding: 1rem;
+    background-color: #fff;
+  }
+
+  .btnright {
+    position: absolute;
+    font-weight: 600;
+    bottom: 50%;
+    right: 0;
+    font-size: 2rem;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  .footer {
+    /* height: fit-content; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1rem;
+    color: #fff;
+  }
+  .itemContainer {
+    margin-left: 3rem;
+    width: 25%;
+  }
+  .signUpPage {
+    position: absolute;
+    right: 40%;
+    top: 7%;
+    z-index: 9999999;
+    background-color: #343333;
+    width: 200px;
+    padding: 1rem;
+    height: 230px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #ffffff29;
+  }
+  .signButtons button {
+    color: #fff;
+  }
+  .menuBtn {
+    display: none;
+  }
+}
+@media (max-width: 414px) {
+  .main{
+    overflow-x: hidden;
+  }
+  .nav{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999999;
+    padding: 1rem;
+  }
+  .account{
+    gap: 0.1rem;
+  }
+  .totalBill{
+    font-size: 0.8rem;
+  }
+  #show {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* margin-top: 2rem; */
+  }
+  .itemContainer {
+    width: 100%;
+    margin-left: 0;
+  }
+  .item {
+    width: 100%;
+  }
+  .aside {
+    display: block;
+    position: fixed;
+    top: 9%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color:gray;
+    z-index: 999999;
+  }
+  .asideItems button {
+    background: none;
+    font-size: 0.8rem;
+    background-color: #ffffff8b;
+    border: 1px solid black;
+  }
+  .asideItems{
+    position: sticky;
+    top: 0;
+    gap: 2rem;
+    flex-direction: row;
+    width: 400px;
+    margin-top: -0.4rem;
+  }
+  .aside h4{
+    display: none;
+    width: 100%;
+  }
+  /* .menuBtn {
+    display: block;
+    color: #ffffffc0;
+    font-size: 2rem;
+  } */
+  .item .title {
+    font-size: 10px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 200px;
+    white-space: wrap;
+    width: 180px;
+  }
+  .account {
+    font-size: 0.8rem;
+    /* display: none; */
+  }
+  .cartIcon {
+    font-size: 2rem;
+  }
+  .head {
+    font-size: 1.2rem;
+  }
+  .btnleft {
+    position: absolute;
+    font-weight: 600;
+    font-size: 2rem;
+    bottom: 50%;
+    left: 0;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  .btnright {
+    position: absolute;
+    font-weight: 600;
+    bottom: 50%;
+    right: 0;
+    font-size: 2rem;
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    transition: all 0.5s ease;
+    cursor: pointer;
+  }
+  .footer {
+    row-gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1.5fr);
+    padding: 1rem;
+    color: #fff;
+  }
+.mainPage{
+  display: block;
+}
+.carousel{
+  margin-left: -10px;
+  width:430px;
+  display: block;
+  margin-top: 9rem;
+}
+/* .showDiv{
+margin-top: 4rem;
+} */
+.item img:hover {
+  transform: scale(1.2);
+  border-radius: 10px;
+}
+.cart a{
+  display: block;
+}
+.circle {
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2rem;
+  background-color: red;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  padding: 0.5rem;
+  right: 30%;
+  top: -15%;
+}
+.modal{
+  margin-top: 10rem;
+}
+.minus, .plus{
+  width: 1.3rem;
+}
+.sumDiv input{
+  width: 2rem;
+}
+.showDiv{
+  margin-top: 10rem;
+}
 }
